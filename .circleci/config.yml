@@ -55,9 +55,9 @@ jobs:
             echo "Container name is ${CONTAINER_NAME}"
             # Pull experiment Factory builder
             echo "1. Preparing experiment building environment"
+            EXPERIMENT_FOLDER=$PWD/experiments
             if [ -d "${EXPERIMENT_FOLDER}" ];
             then
-                EXPERIMENT_FOLDER=$PWD/experiments
                 cd ${EXPERIMENT_FOLDER}
                 for e in $(ls $PWD)
                   do
@@ -65,6 +65,8 @@ jobs:
                       EXPS="${EXPS} /data/${e}"
                   done
             else
+                mkdir "${EXPERIMENT_FOLDER}"
+                cd "${EXPERIMENT_FOLDER}"
                 EXPS=""
             fi
             # Add experiments from experiments.txt

@@ -79,7 +79,10 @@ jobs:
             docker run -td --name expfactory-builder --rm=false --entrypoint bash vanessa/expfactory-builder 
             docker ps
             echo "3. Copy experiments from host to container..."
-            docker cp ${EXPERIMENT_FOLDER}/* expfactory-builder:/data
+            if [ -d "${EXPERIMENT_FOLDER}" ];
+              then
+                 docker cp ${EXPERIMENT_FOLDER}/* expfactory-builder:/data
+              fi
             docker exec expfactory-builder /bin/bash /entrypoint.sh build ${EXPS} 
             echo "4. Copy files from Docker container to host..."
             docker cp expfactory-builder:/data/Dockerfile ${EXPERIMENT_FOLDER}/Dockerfile

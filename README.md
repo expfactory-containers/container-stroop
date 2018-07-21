@@ -1,5 +1,7 @@
 # Experiment Factory Stroop Container
 
+![https://expfactory.github.io/expfactory/img/expfactoryticketyellow.png](https://expfactory.github.io/expfactory/img/expfactoryticketyellow.png)
+
 This is an automated build to generate a stroop task container, including the following Expfactory experiments:
 
  - [stroop](https://www.github.com/expfactory-experiments/stroop)

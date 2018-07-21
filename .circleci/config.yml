@@ -81,7 +81,8 @@ jobs:
             docker run -td --name expfactory-builder --rm=false --entrypoint bash vanessa/expfactory-builder 
             docker ps
             echo "3. Copy experiments from host to container..."
-            if [ -d "${EXPERIMENT_FOLDER}" ];
+            # Check if the directory is empty
+            if find "${EXPERIMENT_FOLDER}" -mindepth 1 | read;
               then
                  docker cp ${EXPERIMENT_FOLDER}/* expfactory-builder:/data
               fi

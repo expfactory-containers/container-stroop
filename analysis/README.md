@@ -67,7 +67,4 @@ $ mv /tmp/data/expfactory expfactory
 
 The analysis script [5min_stroop_analyses.R](5min_stroop_analyses.R) was then run to produce the result. Note
 that this analysis itself is not fully reproducible, as you would need to install R and the required packages.
-
-![tost-plot-example.png](tost-plot-example.png)
-
 Please reach out by asking a question on the [issue board](https://github.com/expfactory-containers/container-stroop/issues) if you need help.

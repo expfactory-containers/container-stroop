@@ -2,7 +2,6 @@
 # Imports
 ######################################
 library("jsonlite")
-library("TOSTER")
 library("effsize")  # cohen.d
 library("lsr")
 library("pwr")
@@ -123,21 +122,3 @@ t.test(m$RT_incong, m$RT_cong, paired=TRUE)
 
 # Effect size
 cohen.d(m$RT_incong, m$RT_cong, paired=TRUE)
-
-#########
-# Timing
-
-# Mean, sd, n
-mt <- mean(m$TimeSpent)
-sd_mt <- sd(m$TimeSpent)
-n_mt <- length(m$TimeSpent)
-
-# TOST procedure
-TOSTone.raw(m = mt, 
-            mu = 5, 
-            sd = sd_mt, 
-            n = n_mt, 
-            low_eqbound = -0.5, 
-            high_eqbound = 0.5, 
-            alpha = 0.05, 
-            plot = TRUE)

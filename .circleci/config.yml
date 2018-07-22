@@ -119,9 +119,13 @@ jobs:
                 then
                     CONTAINER_NAME="${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}"
             fi
+            if [ ! -n "${DOCKER_TAG:-}" ]
+                then
+                    DOCKER_TAG=$(echo "${CIRCLE_SHA1}" | cut -c1-10)
+            fi
             echo "Saving ${CONTAINER_NAME} to container.tar.gz"
             mkdir -p /tmp/cache
-            docker save ${CONTAINER_NAME}:latest \
+            docker save ${CONTAINER_NAME}:${DOCKER_TAG} \
               | pigz -2 -p 3 > /tmp/cache/container.tar.gz
       - persist_to_workspace:
           root: /tmp
